@@ -1,0 +1,31 @@
+{
+  "type" : "record",
+  "name" : "Event",
+  "namespace" : "com.ciam.eventproducer",
+  "fields" : [ {
+    "name" : "type",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "user",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "User",
+      "fields" : [ {
+        "name" : "email",
+        "type" : [ "null", "string" ]
+      }, {
+        "name" : "email_verified",
+        "type" : "boolean"
+      }, {
+        "name" : "external_id",
+        "type" : [ "null", "string" ]
+      }, {
+        "name" : "has_password",
+        "type" : "boolean"
+      }, {
+        "name" : "id",
+        "type" : [ "null", "string" ]
+      } ]
+    } ]
+  } ]
+}
