@@ -35,9 +35,7 @@ public class EventProducerApplication {
 	@InboundChannelAdapter(channel = EventBinding.EVENT_OUT, poller = @Poller(fixedRate = "2000"))
 	public Message<?> generate() {
 		Event eventSend=randomEvent ();
-		if(logger.isTraceEnabled ())
-			logger.trace ("Send Message " + eventSend);
-		logger.info ("send Message");
+		logger.info ("send Message" + eventSend);
 		return MessageBuilder.withPayload(eventSend)
 				.build();
 	}
