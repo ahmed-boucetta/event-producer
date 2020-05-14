@@ -41,7 +41,7 @@ public class EventProducerApplication {
 	}
 
 	private Event randomEvent() {
-		return  Event.newBuilder ().setType ("user_created").setUserBuilder (User.newBuilder ()
+		return  Event.newBuilder ().setType ("user_login").setUserBuilder (User.newBuilder ()
 				.setEmail ("a.boucetta@hotmail.fr").setEmailVerified (true).setId ("123").setExternalId ("test").setHasPassword (true)).build ();
 	};
 
