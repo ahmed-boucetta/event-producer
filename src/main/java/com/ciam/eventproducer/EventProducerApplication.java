@@ -32,7 +32,7 @@ public class EventProducerApplication {
 		client.setEndpoint(endpoint);
 		return client;
 	}
-	@InboundChannelAdapter(channel = EventBinding.EVENT_OUT, poller = @Poller(fixedRate = "2000"))
+	@InboundChannelAdapter(channel = EventBinding.EVENT_OUT, poller = @Poller(fixedRate = "700000"))
 	public Message<?> generate() {
 		Event eventSend=randomEvent ();
 		logger.info ("send Message" + eventSend);
@@ -40,10 +40,9 @@ public class EventProducerApplication {
 				.build();
 	}
 
-	private Event randomEvent() {
+	public static Event randomEvent() {
 		return  Event.newBuilder ().setType ("user_login").setUserBuilder (User.newBuilder ()
 				.setEmail ("a.boucetta@hotmail.fr").setEmailVerified (true).setId ("123").setExternalId ("test").setHasPassword (true)).build ();
 	};
-
 
 }
