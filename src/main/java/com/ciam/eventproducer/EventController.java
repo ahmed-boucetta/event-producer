@@ -24,6 +24,7 @@ public class EventController {
     @RequestMapping(value = "/messages", method = RequestMethod.POST)
     public void sendMessage() {
         try {
+            logger.info ("sendMessage");
             Event eventSend=randomEvent ();
             eventCiam.send ((MessageBuilder.withPayload(eventSend)
                     .build()));

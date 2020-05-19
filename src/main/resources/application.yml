@@ -1,0 +1,47 @@
+spring:
+    cloud:
+        stream:
+            bindings:
+                eventCiam:
+                    contentType: application/*+avro
+            kafka:
+                binder:
+                    configuration:
+                        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+                        value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+                streams:
+                    binder:
+                        configuration:
+                            request:
+                                retry:
+                                    backoff:
+                                        ms: 500
+                                timeout:
+                                    ms: 20000
+                            sasl:
+                                jaas:
+                                    config: org.apache.kafka.common.security.plain.PlainLoginModule
+                                mechanism: PLAIN
+                            security:
+                                protocol: SASL_SSL
+                            ssl:
+                                endpoint:
+                                    identification:
+                                        algorithm: https
+                        jaas:
+                            enabled: true
+                            loginModule: org.apache.kafka.common.security.plain.PlainLoginModule
+                            options:
+                                username: ****
+                                password: ***
+            schema:
+                avro:
+                    schema-locations: classpath:avro/event.avsc
+            schema-registry-client:
+                endpoint: http://localhost:8081
+            schemaRegistryClient:
+                cached: true
+    kafka:
+        bootstrap-servers: pkc-l5mw2.europe-west1.gcp.confluent.cloud:9092
+    main:
+        allow-bean-definition-overriding: true
